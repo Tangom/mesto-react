@@ -17,4 +17,4 @@
 
 **Ссылки**
 
-* [Ссылка на готовый проект В Гитхабе](https://tangom.github.io/mesto/index.html )
+* [Ссылка на готовый проект В Гитхабе](https://tangom.github.io/mesto-react/index.html )
