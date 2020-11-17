@@ -7,7 +7,7 @@ import ImagePopup from './ImagePopup';
 import AddPlacePopup from './AddPlacePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
-import api from '../utils/api';
+import api from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
