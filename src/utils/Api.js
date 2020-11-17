@@ -92,7 +92,15 @@
       })
   }
 
-  deleteLike(data) {
+   changeLikeCardStatus(data, like) {
+     if (like) {
+       return this.deleteLike(data);
+     } else {
+       return this.putLikeCard(data);
+     }
+   }
+
+   deleteLike(data) {
     return fetch(`${this._url}/cards/likes/${data._id}`, {
       method: 'DELETE',
       headers: this._headers,
