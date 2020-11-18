@@ -15,7 +15,7 @@ function Main(props) {
         <div className="profile__input">
           <div className="profile__text">
             <h1 className="profile__name-field">{currentUser.name}</h1>
-            <p className="profile__career-field">{currentUser.career}</p>
+            <p className="profile__career-field">{currentUser.about}</p>
           </div>
           <button className="profile__edit" onClick={props.onEditProfile} type="button">
           </button>

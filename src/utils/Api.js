@@ -92,7 +92,7 @@
       })
   }
 
-   changeLikeCardStatus(data, like) {
+   changeLikeStatus(data, like) {
      if (like) {
        return this.deleteLike(data);
      } else {
@@ -129,7 +129,6 @@
   getAllData() {
     return Promise.all([this.getUser(), this.getInitialCards()]);
   }
-
 }
 
 const api = new Api({

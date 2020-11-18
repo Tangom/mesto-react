@@ -14,7 +14,6 @@ function AddPlacePopup(props) {
     });
   }
 
-
   return (
     <PopupWithForm
       name='card'

@@ -8,8 +8,7 @@ import AddPlacePopup from './AddPlacePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import api from '../utils/Api';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
-
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -23,9 +22,8 @@ function App() {
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-
     // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+    api.changeLikeStatus(card, isLiked).then((newCard) => {
       // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
       const newCards = cards.map((c) => c._id === card._id ? newCard : c);
       // Обновляем стейт
@@ -51,7 +49,7 @@ function App() {
         setCurrentUser(profile)
       })
       .catch((err) => console.log(err));
-  },[])
+  }, [])
 
   function handleUpdateUser(data) {
     api.patchProfileEditing(data)
@@ -61,8 +59,7 @@ function App() {
           closeAllPopups();
         })
       .catch((err) => console.log(err));
-        }
-
+  }
 
   function handleUpdateAvatar(data) {
     api.patchUserAvatar(data)
@@ -72,8 +69,7 @@ function App() {
           closeAllPopups();
         })
       .catch((err) => console.log(err));
-        }
-
+  }
 
   function handleAddPlaceSubmit(data) {
     api.postAddCard(data)
@@ -83,8 +79,7 @@ function App() {
           closeAllPopups();
         })
       .catch((err) => console.log(err));
-        }
-
+  }
 
   function handleEditProfile() {
     setIsEditProfilePopupOpen(true);
@@ -113,7 +108,9 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-         <Header/>
+      <body className="root">
+
+      <Header/>
       <Main
         cards={cards}
         onCardLike={handleCardLike}
@@ -154,6 +151,7 @@ function App() {
         isOpen={isImagePopupOpen}
         onClose={closeAllPopups}
       />
+      </body>
     </CurrentUserContext.Provider>
   );
 }
