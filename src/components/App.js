@@ -29,7 +29,8 @@ function App() {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c);
       // Обновляем стейт
       setCards(newCards);
-    });
+    })
+  .catch((err) => console.log(err));
   }
 
   function handleCardDelete(card) {
@@ -41,6 +42,7 @@ function App() {
         });
         setCards(newCards);
       })
+      .catch((err) => console.log(err));
   }
 
   React.useEffect(() => {
@@ -110,7 +112,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <body className="root">
 
       <Header/>
       <Main
@@ -154,7 +155,6 @@ function App() {
         isOpen={isImagePopupOpen}
         onClose={closeAllPopups}
       />
-      </body>
     </CurrentUserContext.Provider>
   );
 }
