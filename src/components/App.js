@@ -15,7 +15,6 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [isPopupConfirm, setIsPopupConfirm] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
@@ -30,11 +29,10 @@ function App() {
       // Обновляем стейт
       setCards(newCards);
     })
-  .catch((err) => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   function handleCardDelete(card) {
-    setIsPopupConfirm(true);
     api.deleteCard(card)
       .then(() => {
         const newCards = cards.filter((i) => {
@@ -144,7 +142,6 @@ function App() {
       />
 
       <PopupWithForm
-        isOpen={isPopupConfirm}
         name="confirm"
         title="Вы уверены?"
         buttonName="Да"
